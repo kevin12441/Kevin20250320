@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kevin20250320.AppWebMVC.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Kevin20250320.AppWebMVC.Controllers
 {
@@ -48,8 +50,8 @@ namespace Kevin20250320.AppWebMVC.Controllers
         // GET: Producto/Create
         public IActionResult Create()
         {
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandId");
-            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "WarehouseId");
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "Nombre");
+            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "Nombre");
             return View();
         }
 
@@ -66,8 +68,8 @@ namespace Kevin20250320.AppWebMVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandId", product.BrandId);
-            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "WarehouseId", product.WarehouseId);
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "Nombre", product.BrandId);
+            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "Nombre", product.WarehouseId);
             return View(product);
         }
 
@@ -84,8 +86,8 @@ namespace Kevin20250320.AppWebMVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandId", product.BrandId);
-            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "WarehouseId", product.WarehouseId);
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "Nombre", product.BrandId);
+            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "Nombre", product.WarehouseId);
             return View(product);
         }
 
@@ -121,8 +123,8 @@ namespace Kevin20250320.AppWebMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "BrandId", product.BrandId);
-            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "WarehouseId", product.WarehouseId);
+            ViewData["BrandId"] = new SelectList(_context.Brands, "BrandId", "Nombre", product.BrandId);
+            ViewData["WarehouseId"] = new SelectList(_context.Warehouses, "WarehouseId", "Nombre", product.WarehouseId);
             return View(product);
         }
 
